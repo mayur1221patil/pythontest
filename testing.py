@@ -1,74 +1,99 @@
+import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.alert import Alert
 import time
+import HtmlTestRunner
 
-# Configuration
-webdriver_path = r'E:\Downloads\chromedriver-win64\chromedriver-win64\chromedriver.exe'
-username = 'your_username'
-password = 'your_password'
 
-# Create a Service object
-service = Service(webdriver_path)
+class DemoblazeTest(unittest.TestCase):
 
-# Initialize the WebDriver with the service
-driver = webdriver.Chrome(service=service)
+    def setUp(self):
+        webdriver_path = r'E:\Downloads\chromedriver-win64\chromedriver-win64\chromedriver.exe'
+        service = Service(webdriver_path)
+        self.driver = webdriver.Chrome(service=service)
+        self.driver.maximize_window()
+        self.wait = WebDriverWait(self.driver, 10)
 
-# Define a function to log the result
-def log_result(step, result):
-    with open('test_execution_report.txt', 'a') as report:
-        report.write(f"{step}: {result}\n")
+    def test_demoblaze(self):
+        driver = self.driver
+        wait = self.wait
 
-try:
-    # Open the Demoblaze website
-    driver.get('https://demoblaze.com')
-    driver.maximize_window()
+        # Open the website
+        driver.get('https://demoblaze.com')
 
-    # Login
-    driver.find_element(By.ID, 'login2').click()
-    time.sleep(2)
-    WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'loginusername')))
-    driver.find_element(By.ID, 'loginusername').send_keys(username)
-    time.sleep(2)
-    driver.find_element(By.ID, 'loginpassword').send_keys(password)
-    time.sleep(1)
-    driver.find_element(By.XPATH, '//*[@id="logInModal"]/div/div/div[3]/button[2]').click()
-    log_result('Login', 'Success')
-    time.sleep(1)
-    # Scroll down the home page
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(2)  # Wait for the scrolling to complete
-    log_result('Scroll down home page', 'Success')
+        # Sign up
+        sign_up_button = wait.until(EC.element_to_be_clickable((By.ID, 'signin2')))
+        sign_up_button.click()
+        wait.until(EC.visibility_of_element_located((By.ID, 'sign-username')))
+        username_input = driver.find_element(By.ID, 'sign-username')
+        password_input = driver.find_element(By.ID, 'sign-password')
+        username = 'auto123'
+        password = 'Auto123'
+        username_input.send_keys(username)
+        password_input.send_keys(password)
+        sign_up_confirm_button = driver.find_element(By.XPATH, '//*[@id="signInModal"]/div/div/div[3]/button[2]')
+        sign_up_confirm_button.click()
+        time.sleep(2)
+        alert = Alert(driver)
+        alert.accept()
 
-    # Click on next button of home page
-    next_button = driver.find_element(By.CLASS_NAME, 'page-link')
-    next_button.click()
-    time.sleep(2)
-    driver.execute_script("window.scrollTo(0, 0);")
-    time.sleep(2)
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(2)
+        # Log in
+        login_button = driver.find_element(By.ID, 'login2')
+        login_button.click()
+        wait.until(EC.visibility_of_element_located((By.ID, 'loginusername')))
+        time.sleep(1)
+        login_username_input = driver.find_element(By.ID, 'loginusername')
+        time.sleep(1)
+        login_password_input = driver.find_element(By.ID, 'loginpassword')
+        time.sleep(2)
+        login_username_input.send_keys(username)
+        login_password_input.send_keys(password)
+        login_confirm_button = driver.find_element(By.XPATH, '//*[@id="logInModal"]/div/div/div[3]/button[2]')
+        login_confirm_button.click()
+        time.sleep(5)
 
-    # Add the first product of the page into the cart
-    first_product_add_to_cart_button = driver.find_element(By.XPATH, '//*[@id="tbodyid"]/div[1]/div/div/h4/a')
-    first_product_add_to_cart_button.click()
-    time.sleep(2)
-    # Go to cart
-    driver.find_element(By.ID, 'cartur').click()
-    time.sleep(2)  # Wait for the cart page to load
-    log_result('Go to cart', 'Success')
-    time.sleep(2)
-    # Logout
-    driver.find_element(By.ID, 'logout2').click()
-    log_result('Logout', 'Success')
+        # Scroll down home page
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(2)
 
-except Exception as e:
-    log_result('Test execution', f'Failed due to {e}')
-finally:
-    driver.quit()
+        # Click next button on the home page
+        next_button = driver.find_element(By.XPATH, '//*[@id="next2"]')
+        next_button.click()
+        time.sleep(2)
 
-# Displaying the test execution report
-with open('test_execution_report.txt', 'r') as report:
-    print(report.read())
+        # Add the first product of the page to the cart
+        first_product = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tbodyid"]/div[1]/div/div/h4/a')))
+        first_product.click()
+        time.sleep(2)
+
+        add_to_cart_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tbodyid"]/div[2]/div/a')))
+        add_to_cart_button.click()
+        time.sleep(2)
+
+        # Handle alert
+        try:
+            alert = Alert(driver)
+            alert.accept()  # Accept alert
+        except:
+            print("No alert found")
+
+        # Go t cart
+        cart_button = driver.find_element(By.ID, 'cartur')
+        cart_button.click()
+        time.sleep(2)
+
+        # Log out
+        logout_button = wait.until(EC.element_to_be_clickable((By.ID, 'logout2')))
+        logout_button.click()
+        time.sleep(2)
+
+    def tearDown(self):
+        self.driver.quit()
+
+
+if __name__ == "__main__":
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='report'))
