@@ -1,0 +1,80 @@
+Login: Success
+Scroll down home page: Success
+Click on next button: Success
+Add first product to cart: Success
+Test execution: Failed due to Alert Text: Product added.
+Message: unexpected alert open: {Alert text : Product added.}
+  (Session info: chrome=125.0.6422.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF71C4E1F22+60322]
+	(No symbol) [0x00007FF71C45CE99]
+	(No symbol) [0x00007FF71C317EBA]
+	(No symbol) [0x00007FF71C3AC402]
+	(No symbol) [0x00007FF71C38BFC3]
+	(No symbol) [0x00007FF71C359617]
+	(No symbol) [0x00007FF71C35A211]
+	GetHandleVerifier [0x00007FF71C7F946D+3301613]
+	GetHandleVerifier [0x00007FF71C843693+3605267]
+	GetHandleVerifier [0x00007FF71C839410+3563664]
+	GetHandleVerifier [0x00007FF71C5942F6+790390]
+	(No symbol) [0x00007FF71C4674DF]
+	(No symbol) [0x00007FF71C4633D4]
+	(No symbol) [0x00007FF71C463562]
+	(No symbol) [0x00007FF71C452F6F]
+	BaseThreadInitThunk [0x00007FFC3AD67344+20]
+	RtlUserThreadStart [0x00007FFC3C2C26B1+33]
+
+Login: Success
+Scroll down home page: Success
+Add first product to cart: Success
+Test execution: Failed due to Alert Text: Product added.
+Message: unexpected alert open: {Alert text : Product added.}
+  (Session info: chrome=125.0.6422.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF71C4E1F22+60322]
+	(No symbol) [0x00007FF71C45CE99]
+	(No symbol) [0x00007FF71C317EBA]
+	(No symbol) [0x00007FF71C3AC402]
+	(No symbol) [0x00007FF71C38BFC3]
+	(No symbol) [0x00007FF71C359617]
+	(No symbol) [0x00007FF71C35A211]
+	GetHandleVerifier [0x00007FF71C7F946D+3301613]
+	GetHandleVerifier [0x00007FF71C843693+3605267]
+	GetHandleVerifier [0x00007FF71C839410+3563664]
+	GetHandleVerifier [0x00007FF71C5942F6+790390]
+	(No symbol) [0x00007FF71C4674DF]
+	(No symbol) [0x00007FF71C4633D4]
+	(No symbol) [0x00007FF71C463562]
+	(No symbol) [0x00007FF71C452F6F]
+	BaseThreadInitThunk [0x00007FFC3AD67344+20]
+	RtlUserThreadStart [0x00007FFC3C2C26B1+33]
+
+Login: Success
+Scroll down home page: Success
+Add first product to cart: Success
+Test execution: Failed due to Alert Text: Product added.
+Message: unexpected alert open: {Alert text : Product added.}
+  (Session info: chrome=125.0.6422.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF71C4E1F22+60322]
+	(No symbol) [0x00007FF71C45CE99]
+	(No symbol) [0x00007FF71C317EBA]
+	(No symbol) [0x00007FF71C3AC402]
+	(No symbol) [0x00007FF71C38BFC3]
+	(No symbol) [0x00007FF71C359617]
+	(No symbol) [0x00007FF71C35A211]
+	GetHandleVerifier [0x00007FF71C7F946D+3301613]
+	GetHandleVerifier [0x00007FF71C843693+3605267]
+	GetHandleVerifier [0x00007FF71C839410+3563664]
+	GetHandleVerifier [0x00007FF71C5942F6+790390]
+	(No symbol) [0x00007FF71C4674DF]
+	(No symbol) [0x00007FF71C4633D4]
+	(No symbol) [0x00007FF71C463562]
+	(No symbol) [0x00007FF71C452F6F]
+	BaseThreadInitThunk [0x00007FFC3AD67344+20]
+	RtlUserThreadStart [0x00007FFC3C2C26B1+33]
+
+Login: Success
+Scroll down home page: Success
+Go to cart: Success
+Logout: Success
