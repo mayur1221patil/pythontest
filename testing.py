@@ -65,9 +65,9 @@ class DemoblazeTest(unittest.TestCase):
         next_button.click()
         time.sleep(2)
 
-        # Add the first product of the page to the cart
-        first_product = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tbodyid"]/div[1]/div/div/h4/a')))
-        first_product.click()
+        # Add a product to the cart
+        product = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tbodyid"]/div[1]/div/div/h4/a')))
+        product.click()
         time.sleep(2)
 
         add_to_cart_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tbodyid"]/div[2]/div/a')))
@@ -81,7 +81,7 @@ class DemoblazeTest(unittest.TestCase):
         except:
             print("No alert found")
 
-        # Go t cart
+        # Go to cart
         cart_button = driver.find_element(By.ID, 'cartur')
         cart_button.click()
         time.sleep(2)

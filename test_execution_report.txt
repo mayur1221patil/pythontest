@@ -78,3 +78,4 @@ Login: Success
 Scroll down home page: Success
 Go to cart: Success
 Logout: Success
+
